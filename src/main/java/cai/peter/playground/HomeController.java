@@ -1,4 +1,4 @@
-package cai.peter.test;
+package cai.peter.playground;
 
 import java.text.DateFormat;
 import java.util.Date;

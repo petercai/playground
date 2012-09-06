@@ -1,4 +1,4 @@
-package cai.peter.test;
+package cai.peter.playground;
 
 
 public class QuickDial {
