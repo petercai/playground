@@ -3,21 +3,22 @@ package cai.peter.concurrency.sync;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import org.junit.Test;
+
 public class MainThreadLock
 {
-	static public void main(String[] args)
+	@Test
+	public void test()
 	{
-		MainThreadLock main =
-				new MainThreadLock();
 
 		PrintQueue printQueue =
-				main.new PrintQueue();
+				new PrintQueue();
 
 		Thread[] threads = new Thread[10];
 
 		for( int i=0;i<10;i++)
 		{
-			threads[i] = new Thread(main.new Job(printQueue),"Thread "+i);
+			threads[i] = new Thread(new Job(printQueue),"Thread "+i);
 		}
 		for( Thread t : threads)
 			t.start();

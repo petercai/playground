@@ -3,26 +3,26 @@ package cai.peter.concurrency.sync;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+import org.junit.Test;
+
 public class MainThreadRWLock
 {
-	static public void main(String[] args)
+	@Test
+	public void test()
 	{
-		MainThreadRWLock main =
-				new MainThreadRWLock();
-
 		PriceInfo priceInfo =
-				main.new PriceInfo();
+				new PriceInfo();
 
 		Reader[] readers = new Reader[5];
 		Thread[] ts = new Thread[5];
 
 		for(int i=0;i<5;i++)
 		{
-			readers[i] = main.new Reader(priceInfo);
+			readers[i] = new Reader(priceInfo);
 			ts[i] = new Thread(readers[i]);
 		}
 
-		Writer writer = main.new Writer(priceInfo);
+		Writer writer = new Writer(priceInfo);
 		Thread t = new Thread(writer);
 
 		for(int i=0;i<5;i++)
