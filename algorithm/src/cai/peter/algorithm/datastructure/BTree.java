@@ -33,7 +33,7 @@ public class BTree
 		return list;
 	}
 
-	public List<Integer> preorder(Node root)
+	public List<Integer> preorder()
 	{
 		List<Integer> lst = new ArrayList<Integer>();
 		if( root == null ) return null;

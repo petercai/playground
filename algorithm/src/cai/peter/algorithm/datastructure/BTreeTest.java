@@ -1,18 +1,18 @@
 package cai.peter.algorithm.datastructure;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Stack;
 
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Before;
 import org.junit.Test;
+
+import cai.peter.algorithm.datastructure.BTree.Node;
 
 
 public class BTreeTest
 {
 	BTree tree;
-	int[] ar = {0,1,2,3,4,5,6,7,8,9};
+	int[] ar = {23,45,16,37,3,99,22};
 
 	@Before
 	public void init()
@@ -28,7 +28,7 @@ public class BTreeTest
 
 
 
-		List<Integer> list = tree.preorder(root);
+		List<Integer> list = tree.preorder();
 
 		System.out.println("preorder: ");
 		System.out.println(StringUtils.join(list,","));
