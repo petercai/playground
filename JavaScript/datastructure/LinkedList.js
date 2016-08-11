@@ -2,9 +2,11 @@
  * http://usejsdoc.org/
  */
 
-function print(info){
-	console.log(info);
-}
+//function print(info){
+//	console.log(info);
+//}
+
+var o = console;
 
 function Node(element){
 	this.e = element;
@@ -64,7 +66,7 @@ function LinkedList(){
 	this.display = function(){
 		var cur = this.head;
 		while(cur.next!=null){
-			print(cur.next.e);
+			o.log(cur.next.e);
 			cur = cur.next;
 		}2
 	}
@@ -81,10 +83,10 @@ try{
 cities.insert("Error", "None");
 }
 catch(e){
-	print(typeof e);
+	o.log(typeof e);
 	if( e instanceof Error)
-		print(e);
+		o.log(e);
 	else
-		print("No type: "+e);
+		o.log("No type: "+e);
 }
 cities.display();
