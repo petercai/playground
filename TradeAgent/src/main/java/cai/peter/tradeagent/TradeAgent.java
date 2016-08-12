@@ -8,7 +8,6 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.inject.Inject;
 
 import cai.peter.tradeagent.backoffice.BackOfficeException;
 import cai.peter.tradeagent.backoffice.IBackOffice;
