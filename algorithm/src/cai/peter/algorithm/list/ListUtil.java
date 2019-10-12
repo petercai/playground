@@ -6,7 +6,7 @@ import java.util.List;
 public class ListUtil {
     static public List toList(Node head) {
         ArrayList<Integer> res = new ArrayList<>();
-        if( head != null ) {
+        if (head != null) {
             res.add(head.getValue());
             Node next = head.getNext();
             if (next != null)
@@ -15,8 +15,18 @@ public class ListUtil {
         return res;
     }
 
+    static public void createCycle(Node head, Integer cycle) {
+        Node c = null;
+        while (head.getNext() != null) {
+            if( head.getValue()==cycle)
+                c = head;
+            head = head.getNext();
+        }
+        head.setNext(c);
+    }
+
     static public Node valueOf(List<Integer> l) {
-        if(l==null) return  null;
+        if (l == null) return null;
         switch (l.size()) {
             case 0:
                 return null;
