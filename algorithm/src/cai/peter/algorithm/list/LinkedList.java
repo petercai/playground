@@ -20,38 +20,14 @@ public class LinkedList {
         return head;
     }
 
-    public List toList(Node head) {
-        ArrayList<Integer> res = new ArrayList<>();
-        if( head != null ) {
-            res.add(head.getValue());
-            Node next = head.getNext();
-            if (next != null)
-                res.addAll(toList(next));
-        }
-        return res;
-    }
-
-
-    public Node valueOf(List<Integer> l) {
-        if(l==null) return  null;
-        switch (l.size()) {
-            case 0:
-                return null;
-            case 1:
-                return new Node(l.get(0));
-            default:
-                return new Node(l.get(0), valueOf(l.subList(1, l.size())));
-        }
-    }
-
 
     static public void main(String[] args) {
         LinkedList e = new LinkedList();
         List<Integer> l = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
         System.out.println(l);
-        Node head = e.valueOf(l);
+        Node head = ListUtil.valueOf(l);
         head = e.reverse(head);
-        List list = e.toList(head);
+        List list = ListUtil.toList(head);
         System.out.println(list);
     }
 }
