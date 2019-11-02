@@ -56,6 +56,10 @@ public class ArraySorting
 		quickSort(a);
 		System.out.println(Arrays.toString(a));
 	}
+
+	/*
+	 * O(n^2)
+	 */
 	public void insertSort(int[] a)
 	{
 		int curv = 0;
@@ -72,6 +76,9 @@ public class ArraySorting
 		}
 	}
 
+	/*
+	 * O(n(long(n)^2)
+	 */
 	public void shellSort(int[] a)
 	{
 		int size = a.length;
@@ -100,6 +107,9 @@ public class ArraySorting
 		}
 	}
 
+	/*
+	 * O(n^2)
+	 */
 	public void bubbleSort(int[] a)
 	{
 		for(int i=a.length-1;i>1;i--)
@@ -109,7 +119,9 @@ public class ArraySorting
 					_swap(a,j,j+1);
 				}
 	}
-
+	/*
+	 * O(n^2)
+	 */
 	public void selectSort(int[] a)
 	{
 		int len = a.length;
@@ -124,7 +136,9 @@ public class ArraySorting
 		}
 	}
 
-
+	/*
+	 * O(nlog(n))
+	 */
 	public void quickSort(int[] a)
 	{
 		if(a==null || a.length<2) return;
@@ -157,6 +171,9 @@ public class ArraySorting
 
 	int[] ar;
 	int[] helper;
+	/*
+	 * O(nlog(n))
+	 */
 	public void mergeSort(int[] a)
 	{
 		if( a==null || a.length < 2 ) return ;
