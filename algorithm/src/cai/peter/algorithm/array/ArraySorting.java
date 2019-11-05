@@ -1,4 +1,4 @@
-package cai.peter.algorithm.sorting;
+package cai.peter.algorithm.array;
 
 import java.util.Arrays;
 
