@@ -1,4 +1,4 @@
-package cai.peter.spring.rest;
+package cai.peter.spring.rest.blackbox;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

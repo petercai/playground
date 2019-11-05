@@ -1,4 +1,4 @@
-package cai.peter.spring.rest;
+package cai.peter.spring.rest.blackbox;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
