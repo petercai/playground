@@ -11,16 +11,6 @@ import org.junit.Test;
 
 public class BTree
 {
-	public static  class Node
-	{
-		int val;
-		Node left=null,right=null;
-		public Node(int v)
-		{
-			val = v;
-		}
-	}
-
 	Node root;
 
 	public List<Integer> inorder(Node root)
@@ -44,12 +34,12 @@ public class BTree
 		while(!st.empty())
 		{
 			Node e = st.pop();
-			lst.add(e.val);
+			lst.add(e.getValue());
 
-			if( e.right != null )
-				st.push(e.right);
-			if( e.left !=null )
-				st.push(e.left);
+			if( e.getRight() != null )
+				st.push(e.getRight());
+			if( e.getLeft() !=null )
+				st.push(e.getLeft());
 
 		}
 		return lst;
@@ -67,30 +57,30 @@ public class BTree
 		while(!st.empty())
 		{
 			Node cur = st.peek();
-			if( pre==null || pre.left == cur || pre.right == cur )
+			if( pre==null || pre.getLeft() == cur || pre.getRight() == cur )
 			{
-				if( cur.left != null) st.push(cur.left);
-				else if (cur.right!=null) st.push(cur.right);
+				if( cur.getLeft() != null) st.push(cur.getLeft());
+				else if (cur.getRight()!=null) st.push(cur.getRight());
 				else
 				{
 					st.pop();
-					lst.add(cur.val);
+					lst.add(cur.getValue());
 				}
 			}
-			else if( cur.left == pre )
+			else if( cur.getLeft() == pre )
 			{
-				if( cur.right != null ) st.push(cur.right);
+				if( cur.getRight() != null ) st.push(cur.getRight());
 				else
 				{
 					st.pop();
-					lst.add(cur.val);
+					lst.add(cur.getValue());
 				}
 
 			}
-			else if( cur.right == pre )
+			else if( cur.getRight() == pre )
 			{
 				st.pop();
-				lst.add(cur.val);
+				lst.add(cur.getValue());
 			}
 
 			pre = cur;
@@ -111,10 +101,10 @@ public class BTree
 
 	void postRecursive(Node root, List<Integer> lst)
 	{
-		if( root.left != null ) postRecursive(root.left, lst);
-		if( root.right != null ) postRecursive(root.right, lst);
+		if( root.getLeft() != null ) postRecursive(root.getLeft(), lst);
+		if( root.getRight() != null ) postRecursive(root.getRight(), lst);
 
-		lst.add(root.val);
+		lst.add(root.getValue());
 	}
 	public List<Integer> inorderRecursive(Node root)
 	{
@@ -128,27 +118,27 @@ public class BTree
 
 	void inRecursive(Node root, List<Integer> lst)
 	{
-		if(root.left!=null) inRecursive(root.left, lst);
+		if(root.getLeft()!=null) inRecursive(root.getLeft(), lst);
 
-		lst.add(root.val);
+		lst.add(root.getValue());
 
-		if( root.right!=null) inRecursive(root.right, lst);
+		if( root.getRight()!=null) inRecursive(root.getRight(), lst);
 	}
 
 	public Node find(Node root, int v)
 	{
-		if( root.val == v ) return root;
-		else if( v<root.val && root.left!=null) return find(root.left, v);
-		else if(v>root.val && root.right!=null) return find(root.right, v);
+		if( root.getValue() == v ) return root;
+		else if( v<root.getValue() && root.getLeft()!=null) return find(root.getLeft(), v);
+		else if(v>root.getValue() && root.getRight()!=null) return find(root.getRight(), v);
 		else return null;
 	}
 
 	public Node find2(Node root, int v)
 	{
 		Node cur = root;
-		while(cur!=null && cur.val!=v)
+		while(cur!=null && cur.getValue()!=v)
 		{
-			cur = v<cur.val?cur.left:cur.right;
+			cur = v<cur.getValue()?cur.getLeft():cur.getRight();
 		}
 
 		return cur;
@@ -158,28 +148,28 @@ public class BTree
 	{
 		Node cur = root!=null?root:new Node(v);
 		Node parent;
-		while(cur.val!=v)
+		while(cur.getValue()!=v)
 		{
 			parent = cur;
-			if( v < cur.val)
+			if( v < cur.getValue())
 			{
-				// in left
-				cur = cur.left;
+				// in getLeft()
+				cur = cur.getLeft();
 				if( cur == null )
 				{
 					cur = new Node(v);
-					parent.left = cur;
+					parent.setLeft(cur);
 				}
 
 			}
 			else
 			{
-				cur = cur.right;
+				cur = cur.getRight();
 				if( cur == null )
 				{
 
 					cur = new Node(v);
-					parent.right = cur;
+					parent.setRight( cur);
 				}
 
 			}
@@ -191,7 +181,7 @@ public class BTree
 	{
 		Node cur = root;
 		if (root==null) return null;
-		if( root.val == v )
+		if( root.getValue() == v )
 		{
 			root = null;
 			return cur;
@@ -199,49 +189,49 @@ public class BTree
 
 		Node parent=root;
 		boolean isLeft = true;
-		while(cur!=null && cur.val!=v)
+		while(cur!=null && cur.getValue()!=v)
 		{
 			parent = cur;
-			if( v<cur.val )
+			if( v<cur.getValue() )
 			{
-				cur=cur.left;
+				cur=cur.getLeft();
 				isLeft = true;
 			}
 			else
 			{
-				cur = cur.right;
+				cur = cur.getRight();
 				isLeft = false;
 			}
 		}
-		if( cur != null) // find the node (isLeft or right)
+		if( cur != null) // find the node (isLeft or getRight())
 		{
 			/*
 			 * leaf
 			 */
-			if( cur.left==null&&cur.right== null)
+			if( cur.getLeft()==null&&cur.getRight()== null)
 			{
-				if( isLeft ) parent.left = null;
-				else parent.right = null;
+				if( isLeft ) parent.setLeft(null) ;
+				else parent.setRight(null);
 				cur = null;
 
 			}
-			else if(cur.left==null) // only rigth
+			else if(cur.getLeft()==null) // only rigth
 			{
-				if(isLeft) parent.left = cur.right;
-				else	parent.right = cur.right;
+				if(isLeft) parent.setLeft( cur.getRight());
+				else	parent.setRight( cur.getRight());
 			}
-			else if( cur.right==null) // only left
+			else if( cur.getRight()==null) // only getLeft()
 			{
-				if(isLeft) parent.left = cur.left;
-				else parent.right = cur.left;
+				if(isLeft) parent.setLeft(cur.getLeft());
+				else parent.setRight( cur.getLeft());
 			}
-			else // has both right & left
+			else // has both getRight() & getLeft()
 			{
 				Node ser = getSuccessor(cur);
-				ser.left = cur.left;
-				ser.right = cur.right;
-				if( isLeft ) parent.left = ser;
-				else	parent.right = ser;
+				ser.setLeft( cur.getLeft());
+				ser.setRight( cur.getRight());
+				if( isLeft ) parent.setLeft( ser);
+				else	parent.setRight(ser);
 				cur = null;
 			}
 		}
@@ -252,34 +242,34 @@ public class BTree
 	{
 		Node parent = del;
 		Node successor = del;
-		// go to right first
-		Node cur = del.right;
+		// go to getRight() first
+		Node cur = del.getRight();
 		while(cur!=null)
 		{
 			parent = successor;
 			successor = cur;
-			cur = cur.left;
+			cur = cur.getLeft();
 		}
 		//parent is the successor now
-		parent.left = successor.right;
+		parent.setLeft( successor.getRight());
 		return successor;
 	}
 
 	public int height(Node root)
 	{
 		if( root == null ) return 0;
-		return Math.max(height(root.left), height(root.right))+1;
+		return Math.max(height(root.getLeft()), height(root.getRight()))+1;
 	}
 
 	public boolean isBalanced(Node root)
 	{
 		if( root == null ) return true;
 
-		int diff = height(root.left)-height(root.right);
+		int diff = height(root.getLeft())-height(root.getRight());
 		if( Math.abs(diff)>1)
 			return false;
 		else
-			return isBalanced(root.left)&&isBalanced(root.right);
+			return isBalanced(root.getLeft())&&isBalanced(root.getRight());
 	}
 
 	public int depth(Node root)
