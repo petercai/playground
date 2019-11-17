@@ -1,8 +1,8 @@
 package cai.peter.algorithm.tree;
 
 public class BTreeUtil {
-  public static BTree buildFromArrayMid(int[] a) {
-    BTree tree = new BTree();
+  public static BTree2 buildFromArrayMid(int[] a) {
+    BTree2 tree = new BTree2();
     tree.root = insertFromMid(a, 0, a.length - 1);
     return tree;
   }
@@ -18,8 +18,8 @@ public class BTreeUtil {
     return root;
   }
 
-  public static BTree buildFromArray(int[] a) {
-    BTree tree = new BTree();
+  public static BTree2 buildFromArray(int[] a) {
+    BTree2 tree = new BTree2();
     for (int v : a) tree.insert(v);
     return tree;
   }
