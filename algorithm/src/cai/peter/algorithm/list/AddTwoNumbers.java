@@ -1,5 +1,9 @@
 package cai.peter.algorithm.list;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /*
 You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
 
@@ -8,45 +12,34 @@ Output: 7 -> 0 -> 8
 Java Solution
 
 
-public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode fake = new ListNode(0);
-        ListNode p = fake;
-
-        ListNode p1 = l1;
-        ListNode p2 = l2;
-
-        int carry = 0;
-        while(p1!=null || p2!=null){
-        int sum = carry;
-        if(p1!=null){
-        sum += p1.val;
-        p1 = p1.next;
-        }
-
-        if(p2!=null){
-        sum += p2.val;
-        p2 = p2.next;
-        }
-
-        if(sum>9){
-        carry=1;
-        sum = sum-10;
-        }else{
-        carry = 0;
-        }
-
-        ListNode l = new ListNode(sum);
-        p.next = l;
-        p = p.next;
-        }
-
-        //don't forget check the carry value at the end
-        if(carry > 0){
-        ListNode l = new ListNode(carry);
-        p.next = l;
-        }
-        return fake.next;
-        }
  */
 public class AddTwoNumbers {
+  public Node addTwo(Node first, Node second) {
+    Node head = null, cur = null;
+    int carry = 0;
+    while (first != null || second != null || carry > 0) {
+      int sum =
+          carry + (first == null ? 0 : first.getValue()) + (second == null ? 0 : second.getValue());
+      Node tmp = new Node(sum % 10);
+      if (head == null) {
+        head = tmp;
+        cur = tmp;
+      } else {
+        carry = sum / 10;
+        cur.setNext(tmp);
+        cur = tmp;
+      }
+      first = first == null ? null : first.getNext();
+      second = second == null ? null : second.getNext();
+    }
+    return head;
+  }
+
+  @Test
+  public void test() {
+    Node s = ListUtil.valueOf(Arrays.asList(2, 4, 3));
+    Node f = ListUtil.valueOf(Arrays.asList(5, 6, 6, 9));
+    Node res = addTwo(f, s);
+    System.out.println(ListUtil.toList(res));
+  }
 }
