@@ -24,7 +24,7 @@ Explanation: The answer is "wke", with the length of 3.
  */
 public class LongestSubString {
   public int length(String s) {
-    int len = s.length(), ans = 0;
+    int len = s.length(), res = 0;
     int[] seq = new int[128];
     /*
      * try to extend the range of [i,j]
@@ -32,11 +32,10 @@ public class LongestSubString {
     for (int left = 0, right = 0; right < len; right++) { // right pointer keep moving
       char pos = s.charAt(right);
       left = Math.max(seq[pos], left);
-      ans = Math.max(ans, right - left + 1);
+      res = Math.max(res, right - left + 1);
       seq[pos] = right + 1; // set to next position
-      left = left;
     }
-    return ans;
+    return res;
   }
 
   @Test
