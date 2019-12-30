@@ -43,14 +43,6 @@ public class ArraySorting
 		System.out.println(Arrays.toString(a));
 	}
 
-	@Test
-	public  void testQuickSort()
-	{
-		System.out.println(Arrays.toString(a));
-		quickSort(a);
-		System.out.println(Arrays.toString(a));
-	}
-
 	/*
 	 * O(n^2)
 	 */
@@ -130,32 +122,7 @@ public class ArraySorting
 		}
 	}
 
-	/*
-	 * O(nlog(n))
-	 */
-	public void quickSort(int[] a)
-	{
-		if(a==null || a.length<2) return;
-		_quick(a, 0,a.length-1);
 
-	}
-
-	void _quick(int[] a, int start, int end)
-	{
-		if( start >= end ) return;
-
-		int pivot = a[start+(end-start)/2];
-		int i=start, j=end;
-		while(i<=j)
-		{
-			while(a[i]<pivot) i++;
-			while(a[j]>pivot) j--;
-			if( i<=j )
-				_swap(a,i++,j--);
-		}
-		if( start < j ) _quick(a,start, j);
-		if( end > i ) _quick(a,i, end);
-	}
 	public void _swap(int[] a, int first, int second)
 	{
 		int t = a[first];
