@@ -42,13 +42,7 @@ public class ArraySorting
 		shellSort(a);
 		System.out.println(Arrays.toString(a));
 	}
-	@Test
-	public  void testMergeSort()
-	{
-		System.out.println(Arrays.toString(a));
-		mergeSort(a);
-		System.out.println(Arrays.toString(a));
-	}
+
 	@Test
 	public  void testQuickSort()
 	{
@@ -169,49 +163,5 @@ public class ArraySorting
 		a[second]=t;
 	}
 
-	int[] ar;
-	int[] helper;
-	/*
-	 * O(nlog(n))
-	 */
-	public void mergeSort(int[] a)
-	{
-		if( a==null || a.length < 2 ) return ;
-		ar = a;
-		helper = new int[a.length];
 
-		_divide(0, a.length-1);
-	}
-
-	void _divide(int start, int end)
-	{
-		if( start < end )
-		{
-			int mid = start + (end-start)/2;
-			_divide(start, mid);
-			_divide(mid+1,end);
-			_merge(start, mid, end);
-		}
-
-	}
-	void _merge(int start, int mid, int end)
-	{
-		for(int i=start;i<=end;i++)
-		{
-			helper[i] = ar[i];
-		}
-		int i=start;
-		int j = mid+1;
-		int k = start;
-		while(i<=mid&&j<=end)
-		{
-			if( helper[i]<=helper[j])
-				ar[k]=helper[i++];
-			else
-				ar[k]=helper[j++];
-			k++;
-		}
-		while(i<=mid)
-			ar[k++]=helper[i++];
-	}
 }
