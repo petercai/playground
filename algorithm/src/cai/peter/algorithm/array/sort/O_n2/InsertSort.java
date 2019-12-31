@@ -18,34 +18,33 @@ Peter: it's fast for LinkedList implementation. for array, there are data block 
 
  */
 public class InsertSort {
-    public void sort(int[] a){
-        if( a==null || a.length < 2) return;
-        for(int i=1;i<a.length;i++){
-            int j=i-1;
-            int v = a[i];
-            /*
-            move data block for insertion
-             */
-            while(j>=0 && v<a[j])
-            {
-                /*
-                move data one by one backward until find the right position
-                 */
-                a[j+1]= a[j];
-                j--;
-            }
-            /*
-            insert
-             */
-            a[j+1] = v;
-        }
+  public void sort(int[] a) {
+    if (a == null || a.length < 2) return;
+    for (int i = 1; i < a.length; i++) {
+      int j = i - 1;
+      int v = a[i];
+      /*
+      move data block for insertion
+       */
+      while (j >= 0 && v < a[j]) {
+        /*
+        move data one by one backward until find the right position
+         */
+        a[j + 1] = a[j];
+        j--;
+      }
+      /*
+      insert
+       */
+      a[j + 1] = v;
     }
+  }
 
-    @Test
-    public void test(){
-        int[] a= ArrayUtil.a;
+  @Test
+  public void test() {
+    int[] a = ArrayUtil.a;
     System.out.println(Arrays.toString(a));
     sort(a);
     System.out.println(Arrays.toString(a));
-    }
+  }
 }
