@@ -16,13 +16,6 @@ public class ArraySorting
 	}
 
 	@Test
-	public  void testSelectSort()
-	{
-		System.out.println(Arrays.toString(a));
-		selectSort(a);
-		System.out.println(Arrays.toString(a));
-	}
-	@Test
 	public  void testInsertSort()
 	{
 		System.out.println(Arrays.toString(a));
@@ -88,22 +81,6 @@ public class ArraySorting
 	}
 
 
-	/*
-	 * O(n^2)
-	 */
-	public void selectSort(int[] a)
-	{
-		int len = a.length;
-		for(int i=0;i<len;i++)
-		{
-			int min=i;
-			for(int j=i+1;j<len;j++)
-			{
-				if(a[j]<a[min]) min = j;
-			}
-			_swap(a,i,min);
-		}
-	}
 
 
 	public void _swap(int[] a, int first, int second)
