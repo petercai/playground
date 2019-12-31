@@ -1,5 +1,6 @@
-package cai.peter.algorithm.array;
+package cai.peter.algorithm.array.sort.O_n2;
 
+import cai.peter.algorithm.array.ArrayUtil;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -12,15 +13,9 @@ public class BubbleSort {
       the biggest goes to the end of array in each iteration
        */
       for (int j = 0; j < i; j++) {
-        if (a[j] > a[j + 1]) swap(a, j, j + 1);
+        if (a[j] > a[j + 1]) ArrayUtil.swap(a, j, j + 1);
       }
     }
-  }
-
-  private void swap(int[] a, int i, int j) {
-    int t = a[i];
-    a[i] = a[j];
-    a[j] = t;
   }
 
   @Test

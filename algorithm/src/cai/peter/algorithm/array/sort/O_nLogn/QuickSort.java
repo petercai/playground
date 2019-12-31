@@ -1,4 +1,4 @@
-package cai.peter.algorithm.array;
+package cai.peter.algorithm.array.sort.O_nLogn;
 
 import org.junit.Test;
 
