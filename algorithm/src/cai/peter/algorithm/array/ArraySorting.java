@@ -99,6 +99,9 @@ public class ArraySorting
 	public void bubbleSort(int[] a)
 	{
 		for(int i=a.length-1;i>1;i--)
+			/*
+			the biggest goes to the end in each iteration
+			 */
 			for(int j=0;j<i;j++)
 				if( a[j]>a[j+1])
 				{
