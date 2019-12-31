@@ -14,13 +14,7 @@ public class ArraySorting
 		a = new int[] {49,38,65,97,76,13,27,49,78,34,12,64,5,4,62,99,98,54,56,17,18,23,34,15,35,25,53,51};
 
 	}
-	@Test
-	public  void testBubbleSort()
-	{
-		System.out.println(Arrays.toString(a));
-		bubbleSort(a);
-		System.out.println(Arrays.toString(a));
-	}
+
 	@Test
 	public  void testSelectSort()
 	{
@@ -93,21 +87,7 @@ public class ArraySorting
 		}
 	}
 
-	/*
-	 * O(n^2)
-	 */
-	public void bubbleSort(int[] a)
-	{
-		for(int i=a.length-1;i>1;i--)
-			/*
-			the biggest goes to the end in each iteration
-			 */
-			for(int j=0;j<i;j++)
-				if( a[j]>a[j+1])
-				{
-					_swap(a,j,j+1);
-				}
-	}
+
 	/*
 	 * O(n^2)
 	 */
