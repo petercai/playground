@@ -1,6 +1,8 @@
 package cai.peter.algorithm.array;
 
 
+import org.junit.Test;
+
 public class FormatInt {
     public String formatInt(int v) {
         String s = String.valueOf(v);
@@ -14,10 +16,12 @@ public class FormatInt {
         return b.toString();
     }
 
-    static public void main(String[] args)
-    {
+    @Test
+    public void test(){
+
         int v=123456;
         System.out.println(v);
-        System.out.println(new FormatInt().formatInt(v));
+        System.out.println(formatInt(v));
     }
+
 }
