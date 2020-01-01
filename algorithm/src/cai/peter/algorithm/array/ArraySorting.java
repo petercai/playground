@@ -16,13 +16,6 @@ public class ArraySorting
 	}
 
 	@Test
-	public  void testInsertSort()
-	{
-		System.out.println(Arrays.toString(a));
-		insertSort(a);
-		System.out.println(Arrays.toString(a));
-	}
-	@Test
 	public  void testShellSort()
 	{
 		System.out.println(Arrays.toString(a));
@@ -30,24 +23,6 @@ public class ArraySorting
 		System.out.println(Arrays.toString(a));
 	}
 
-	/*
-	 * O(n^2)
-	 */
-	public void insertSort(int[] a)
-	{
-		int curv = 0;
-		for(int i=1;i<a.length;i++)
-		{
-			int j=i-1;
-			curv = a[i];
-			while(j>=0&&curv<a[j])
-			{
-				a[j+1] = a[j];
-				j--;
-			}
-			a[j+1] = curv;
-		}
-	}
 
 	/*
 	 * O(n(long(n)^2)
