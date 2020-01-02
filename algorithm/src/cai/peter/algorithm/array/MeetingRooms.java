@@ -20,22 +20,22 @@ public class MeetingRooms {
   }
 
   public int calMeetingRooms(Interval[] s) {
-    Queue<Integer> q = new PriorityQueue<Integer>();
-    q.offer(s[0].end);
-    int count = 0;
+    Queue<Integer> q = new PriorityQueue<>();
     for (Interval i : s) {
-      if (i.start <= q.peek()) { // compare with one wil finish earlist
-        count++; // there is overlap
-      } else q.poll(); // remove earlist
-      q.offer(i.end); // add this one
+      if (q.peek() == null) q.offer(i.end); // always add first
+      else {
+        q.offer(i.end); // add one by one
+        if (i.start >= q.peek()) q.poll();
+      }
     }
-    return count;
+    return q.size();
   }
 
   @Test
-  public void testMettingRoo()
-  {
-    Interval[] is = {new Interval(1, 2),new Interval(2,3), new Interval(4,5),new Interval(3,6)};
-    Assert.assertEquals(2,calMeetingRooms(is));
+  public void testMettingRoo() {
+    Interval[] is = {
+      new Interval(1, 2), new Interval(2, 3),new Interval(4, 5), new Interval(4, 5), new Interval(3, 6)
+    };
+    Assert.assertEquals(3, calMeetingRooms(is));
   }
 }
