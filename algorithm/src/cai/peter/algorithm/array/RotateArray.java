@@ -27,26 +27,20 @@ public class RotateArray {
     System.arraycopy(tmp, 0, src, 0, len);
   }
 
-  interface Triple {
-    void apply(int[] a, int start, int end);
+  public void r2(int[] a, int k){
+    int seg = a.length-k;
+    _r(a, 0, seg-1);
+    _r(a, seg, a.length-1);
+    _r(a, 0, a.length-1);
   }
-
-  public void r2(int[] s, int k) {
-    Triple reverse =
-        (int[] a, int start, int end) -> {
-          while (start < end) {
-            int tmp = a[start];
-            a[start] = a[end];
-            a[end] = tmp;
-            start++;
-            end--;
-          }
-        };
-
-    int order = s.length-k;//7-3
-    reverse.apply(s,0,order-1);
-    reverse.apply(s,order, s.length-1);
-    reverse.apply(s,0,s.length-1);
+  public void _r(int[]a, int i, int j){
+    while( i<j){
+      int t = a[i];
+      a[i]=a[j];
+      a[j]=t;
+      i++;
+      j--;
+    }
   }
 
   @Test
