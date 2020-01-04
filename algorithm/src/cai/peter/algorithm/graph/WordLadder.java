@@ -1,4 +1,6 @@
-package cai.peter.algorithm.array;
+package cai.peter.algorithm.graph;
+
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +15,9 @@ and each intermediate word must exist in the dictionary. For example, given:
 start = "hit"
 end = "cog"
 dict = ["hot","dot","dog","lot","log"]
+
+
+https://leetcode.com/problems/word-ladder/solution/
  */
 public class WordLadder {
   public String[] ladder(String start, String end, String[] dic) {
@@ -40,9 +45,9 @@ public class WordLadder {
     return res.toArray(new String[0]);
   }
 
-  public static void main(String[] args) {
-    String[] ladder =
-        new WordLadder().ladder("hit", "cog", new String[] {"hot", "dot", "dog", "lot", "log"});
-    System.out.println(Arrays.asList(ladder));
+  @Test
+  public void test() {
+    System.out.println(
+        Arrays.asList(ladder("hit", "cog", new String[] {"hot", "dot", "dog", "lot", "log"})));
   }
 }
