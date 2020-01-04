@@ -10,6 +10,14 @@ giving candies to these children subjected to the following requirements:
 1 . Each child must have at least one candy. 2 . Children with a higher rating get
 more candies than their neighbors.
 What is the minimum candies you must give?
+
+
+We can always assign a neighbor with 1 more if the neighbor has higher a rating value.
+However, to get the minimum total number, we should always start adding 1s in the ascending order.
+We can solve this problem by scanning the array from both sides.
+
+First, scan the array from left to right, and assign values for all the ascending pairs.
+Then scan from right to left and assign values to descending pairs.
  */
 public class Candy {
   public int assign(int[] rates) {
@@ -27,6 +35,10 @@ public class Candy {
     }
 
     return result;
+  }
+
+  public int trapRainWater(int[] a){
+    return 0;
   }
 
   @Test
