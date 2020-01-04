@@ -24,7 +24,6 @@ public class ContainerWithMostWater {
             max = Math.max(max, (j-i)*Math.min(a[i],a[j]));
             if( a[i]<a[j]) i++;
             else j--;
-            j=j;
         }
         return max;
     }
