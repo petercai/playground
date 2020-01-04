@@ -29,7 +29,7 @@ public class TwoSum {
 
     @Test
     public void test(){
-        int[] result = twoSum(new int[]{2, 7, 11, 15}, 5);
+        int[] result = twoSum(new int[]{2, 7, 11, 15}, 18);
         System.out.println(Arrays.toString(result));
     }
 }
