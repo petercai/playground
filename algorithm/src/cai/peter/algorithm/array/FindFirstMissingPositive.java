@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class FindFirstMissingPosition {
+public class FindFirstMissingPositive {
     /*
     Given an unsorted integer array, ﬁnd the ﬁrst missing positive integer. For example,
     given [ 1 , 2 , 0 ] return 3 and [ 3 , 4 ,- 1 , 1 ] return 2
