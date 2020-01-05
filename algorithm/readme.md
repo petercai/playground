@@ -10,7 +10,7 @@
 - [ ] 07) Merge Intervals, Insert Interval
 - [x] 09) Two Sum, Two Sum II, Two Sum III, 3Sum, 4Sum
 - [ ] 10) 3Sum Closest
-- [ ] 11) String to Integer
+- [x] 11) String to Integer
 - [ ] 12) Merge Sorted Array
 - [x] 13) Valid Parentheses
 - [ ] ~~13) Longest Valid Parentheses~~
@@ -55,7 +55,7 @@
 - [ ] 54) Get Target Using Number List And Arithmetic Operations
 - [ ] 55) Reverse Vowels of a String
 - [ ] 56) Flip Game, Flip Game II
-- [ ] 57) Missing Number, Find the duplicate number, First Missing Positive
+- [x] 57) Missing Number, Find the duplicate number, **First Missing Positive**
 - [ ] 58) Valid Anagram, Group Shifted Strings
 - [ ] <u>59) Top K Frequent Elements</u>
 - [ ] 60) Find Peak Element
