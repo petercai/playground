@@ -18,17 +18,22 @@ Given an array nums, write a function to move all 0 ’s to the end of it while 
 the relative order of the non-zero elements.
 For example, given nums = [ 0 , 1 , 0 , 3 , 12 ], after calling your function, nums should
 be [ 1 , 3 , 12 , 0 , 0 ].
-@bubble sorting
  */
     public void moveZero(int[] s) {
         int z = -1;
         for (int i = 0; i < s.length; i++) {
             if (s[i] == 0) {
-                if (z == -1 || s[z] != 0) z = i; // zero pointer position at value pointer(=0)
-                // if it is not at zero value
+                /*
+                if zero pinter points to a non-zero value, catches up with value pointer
+                 */
+                if (z == -1 || s[z] != 0) z = i;
             } else if (z != -1) {
-                swap(s, i, z); // swap zero pointer with non-zero value
-                z++; // zero pointer move to  next ( zero or not)
+                /*
+                swap zero pointer with value pointer,
+                move zero pointer to next value in cause it's zero again
+                 */
+                swap(s, i, z);
+                z++;
             }
         }
     }
