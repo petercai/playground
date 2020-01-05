@@ -1,4 +1,4 @@
-package cai.peter.algorithm.list;
+package cai.peter.algorithm.list.obsolete;
 
 import java.util.Arrays;
 
