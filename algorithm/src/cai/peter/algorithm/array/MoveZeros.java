@@ -24,10 +24,11 @@ be [ 1 , 3 , 12 , 0 , 0 ].
         int z = -1;
         for (int i = 0; i < s.length; i++) {
             if (s[i] == 0) {
-                if (z == -1 || s[z] != 0) z = i;
+                if (z == -1 || s[z] != 0) z = i; // zero pointer position at value pointer(=0)
+                // if it is not at zero value
             } else if (z != -1) {
-                swap(s, i, z);
-                z++;
+                swap(s, i, z); // swap zero pointer with non-zero value
+                z++; // zero pointer move to  next ( zero or not)
             }
         }
     }
@@ -35,9 +36,9 @@ be [ 1 , 3 , 12 , 0 , 0 ].
     @Test
     public void testMoveZero() {
         int[] s = {0, 1, 0, 3, 12, 7, 8};
-        System.out.println(Arrays.asList(s));
+        System.out.println(Arrays.toString(s));
         moveZero(s);
         //    int[] ints = moveZero(s);
-        System.out.println(Arrays.asList(s));
+        System.out.println(Arrays.toString(s));
     }
 }

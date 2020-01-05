@@ -2,16 +2,16 @@
 
 - [x] 01) Rotate Array, Reverse Words in a String
 - [x] 02) Evaluate Reverse Polish Notation (Stack)
-- [ ] 03) Isomorphic Strings
+- [x] 03) Isomorphic Strings
 - [ ] ~~04) Word Ladder (BFS), Word Ladder II (BFS)~~
-- [ ] ~~05) Median of Two Sorted Arrays~~
-- [ ] 05) Kth Largest Element in an Array
+- [ ] **05) Median of Two Sorted Arrays**
+- [x] ~~05) Kth Largest Element in an Array~~ - Arrays.sort()
 - [ ] 06) Wildcard Matching, Regular Expression Matching
 - [ ] 07) Merge Intervals, Insert Interval
 - [x] 09) Two Sum, Two Sum II, Two Sum III, 3Sum, 4Sum
 - [ ] 10) 3Sum Closest
 - [x] 11) String to Integer
-- [ ] 12) Merge Sorted Array
+- [ ] **12) Merge Sorted Array**
 - [x] 13) Valid Parentheses
 - [ ] ~~13) Longest Valid Parentheses~~
 - [ ] 14) Implement strStr()
