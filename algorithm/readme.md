@@ -3,11 +3,11 @@
 - [x] 01) Rotate Array, Reverse Words in a String
 - [x] 02) Evaluate Reverse Polish Notation (Stack)
 - [x] 03) Isomorphic Strings
-- [ ] ~~04) Word Ladder (BFS), Word Ladder II (BFS)~~
+- [ ] **04) Word Ladder (BFS), Word Ladder II (BFS)** - *graph
 - [ ] **05) Median of Two Sorted Arrays**
 - [x] 05) Kth Largest Element in an Array 
 - [ ] **06) Wildcard Matching, Regular Expression Matching**
-- [ ] 07) Merge Intervals, Insert Interval
+- [x] 07) Merge Intervals, Insert Interval
 - [x] 09) Two Sum, Two Sum II, Two Sum III, 3Sum, 4Sum
 - [ ] 10) 3Sum Closest
 - [x] 11) String to Integer
