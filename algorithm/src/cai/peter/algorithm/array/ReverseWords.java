@@ -13,7 +13,7 @@ public class ReverseWords {
                 i=j+1;
             }
         }
-        reverse(cs,i, cs.length-1);
+        reverse(cs,i, cs.length-1); // never forget the last word
         reverse(cs, 0, cs.length-1);
         return new String(cs);
     }
