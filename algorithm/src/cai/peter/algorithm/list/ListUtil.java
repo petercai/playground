@@ -1,39 +1,61 @@
 package cai.peter.algorithm.list;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListUtil {
-    static public List toList(Node head) {
-        ArrayList<Integer> res = new ArrayList<>();
-        if (head != null) {
-            res.add(head.getValue());
-            Node next = head.getNext();
-            if (next != null)
-                res.addAll(toList(next));
-        }
-        return res;
-    }
+  public static List<Integer> toList(Node head) {
+      List<Integer> res = new ArrayList<>();
+      while(head !=null){
+          res.add(head.getValue());
+          head = head.getNext();
+      }
+      return res;
+  }
 
-    static public void createCycle(Node head, Integer cycle) {
-        Node c = null;
-        while (head.getNext() != null) {
-            if( head.getValue()==cycle)
-                c = head;
-            head = head.getNext();
-        }
-        head.setNext(c);
-    }
+  @Test
+  public void testToList(){
+        Node head = valueOf(Arrays.asList(1,2,3,4,5,6,7,8,9));
+        System.out.println(toList(head));
+  }
 
-    static public Node valueOf(List<Integer> l) {
-        if (l == null) return null;
-        switch (l.size()) {
-            case 0:
-                return null;
-            case 1:
-                return new Node(l.get(0));
-            default:
-                return new Node(l.get(0), valueOf(l.subList(1, l.size())));
-        }
+  public static void createCycle(Node head, Integer cycle) {
+    Node c = null;
+    while (head.getNext() != null) {
+      if (head.getValue() == cycle) c = head;
+      head = head.getNext();
     }
+    head.setNext(c);
+  }
+
+  public static Node valueOf(List<Integer> l) {
+    Node head = null, cur = null;
+    if (l == null || l.isEmpty()) return null;
+    for (int i = 0; i < l.size(); i++) {
+      int v = l.get(i);
+      if (i == 0) {
+        head = new Node(v);
+        cur = head;
+      } else {
+        cur.setNext(new Node(v));
+        cur = cur.getNext();
+      }
+    }
+    return head;
+  }
+
+  @Test
+  public void testValueOf() {
+    List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    System.out.println(list);
+    Node head = valueOf(list);
+    for (int i : list) {
+      Assert.assertEquals(i, head.getValue());
+      head = head.getNext();
+    }
+  }
 }
