@@ -1,5 +1,9 @@
 package cai.peter.algorithm.list;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /*
 Given a non-empty, singly linked list with head node head, return a middle node of linked list.
 
@@ -27,12 +31,38 @@ When traversing the list with a pointer slow, make another pointer fast that tra
 When fast reaches the end of the list, slow must be in the middle.
  */
 public class MiddleOfList {
-    public Node middleNode(Node head) {
-        Node slow = head, fast = head;
-        while (fast != null && fast.getNext() != null) {
-            slow = slow.getNext();
-            fast = fast.getNext().getNext();
-        }
-        return slow;
+  public Node middle(Node head) {
+    if (head == null || head.getNext() == null) return head;
+
+    Node fast = head, slow = head;
+    while (fast != null && fast.getNext() != null) {
+      slow = slow.getNext();
+      fast = fast.getNext().getNext();
     }
+    return slow;
+  }
+
+  @Test
+  public void test() {
+    Node head = ListUtil.valueOf(Arrays.asList(1));
+    System.out.println(ListUtil.toList(middle(head)));
+  }
+
+  @Test
+  public void test1() {
+    Node head = ListUtil.valueOf(Arrays.asList(1, 2));
+    System.out.println(ListUtil.toList(middle(head)));
+  }
+
+  @Test
+  public void test2() {
+    Node head = ListUtil.valueOf(Arrays.asList(1, 2, 3));
+    System.out.println(ListUtil.toList(middle(head)));
+  }
+
+  @Test
+  public void test3() {
+    Node head = ListUtil.valueOf(Arrays.asList(1, 2, 3, 4, 5));
+    System.out.println(ListUtil.toList(middle(head)));
+  }
 }
