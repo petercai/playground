@@ -41,8 +41,12 @@ public class LinkedList {
 
     ListUtil.createCycle(head, 2);
     Assert.assertEquals(true,hasCycle(head));
-    //        head = e.reverse(head);
-    //        List list = ListUtil.toList(head);
-    //        System.out.println(list);
+
+  }
+
+  @Test
+  public void testReverse(){
+    Node head = ListUtil.valueOf(Arrays.asList(1,2,3,4,5,6,7,8,9));
+    System.out.println(ListUtil.toList(reverse(head)));
   }
 }
