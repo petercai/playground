@@ -13,16 +13,6 @@ public class BTree2
 {
 	Node root;
 
-	public List<Integer> inorder(Node root)
-	{
-		List<Integer> list = new ArrayList<Integer>();
-		if( root == null) return list;
-
-		Stack<Node> stack = new Stack<Node>();
-
-		return list;
-	}
-
 	public List<Integer> preorder()
 	{
 		List<Integer> lst = new ArrayList<Integer>();
@@ -34,7 +24,7 @@ public class BTree2
 		while(!st.empty())
 		{
 			Node e = st.pop();
-			lst.add(e.getValue());
+			lst.add(e.getValue()); // add value before trase
 
 			if( e.getRight() != null )
 				st.push(e.getRight());
