@@ -19,6 +19,15 @@ public class BTree {
         else return isBalance(root.getLeft()) && isBalance(root.getRight()); // compare all branches
     }
 
+    public int depth(Node root) {
+        if (root == null) return 0;
+        if (root.getRight() == null && root.getLeft() == null) return 1;
+        if (root.getLeft() == null) return depth(root.getRight()) + 1;
+        if (root.getRight() == null) return depth(root.getLeft()) + 1;
+
+        return Math.min(depth(root.getLeft()), depth(root.getRight()));
+    }
+
     public void insert(Node root, int v) {
         if (root == null) root = new Node(v);
         else {
