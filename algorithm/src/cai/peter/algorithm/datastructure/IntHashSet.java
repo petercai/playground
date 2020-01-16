@@ -23,7 +23,7 @@ public class IntHashSet {
         Node bucket = buckets[index];
         if( bucket==null) throw new NoSuchElementException("Invalid element");
 
-        if( bucket.getValue())
+//        if( bucket.getValue())
 
     }
 }
