@@ -43,7 +43,7 @@ public class BTree {
     }
 
     // Function to insert nodes in level order
-    public Node insertLevelOrder(int[] arr, int i) {
+    static public Node insertLevelOrder(int[] arr, int i) {
         Node root = null;
         if (i < arr.length) {
             root = new Node(arr[i]);
