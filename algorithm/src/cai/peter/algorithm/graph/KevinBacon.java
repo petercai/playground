@@ -1,10 +1,10 @@
-package cai.peter.algorithm.graph.kevinbacon;
+package cai.peter.algorithm.graph;
 
 import org.junit.Test;
 
 import java.util.*;
 
-public class Solution {
+public class KevinBacon {
 
   private static void pm(Object o) {
     System.out.println(o);
@@ -15,12 +15,12 @@ public class Solution {
   private class Actor {
     public final String name;
     public Set<Actor> costars;
-    public int baconNumber;
+    public int degree;
 
     public Actor(String name) {
       this.name = name;
       costars = new HashSet<>();
-      baconNumber = -1;
+      degree = -1;
     }
 
     public void linkActor(Actor costar) {
@@ -31,7 +31,7 @@ public class Solution {
 
     @Override
     public String toString() {
-      String tmp = name + "(" + baconNumber + ")" + ": ";
+      String tmp = name + "(" + degree + ")" + ": ";
       for (Actor an : costars.toArray(new Actor[0])) tmp += an.name + ", ";
       return tmp;
     }
@@ -41,13 +41,13 @@ public class Solution {
     if (!actors.containsKey(actor)) throw new IllegalArgumentException("Invalid actor!");
     Queue<Actor> q = new LinkedList<>();
     Actor start = actors.get(actor);
-    start.baconNumber = 0;
+    start.degree = 0;
     q.offer(start);
     while (!q.isEmpty()) {
       Actor a = q.poll();
       for (Actor n : a.costars) {
-        if (n.baconNumber == -1) {
-          n.baconNumber = a.baconNumber + 1;
+        if (n.degree == -1) {
+          n.degree = a.degree + 1;
           q.offer(n);
         }
       }
@@ -58,14 +58,14 @@ public class Solution {
   public void testAC_BFS() {
     this.resetGraph();
     this.bfsBuildBacon("A");
-    pm(actors.get("C").baconNumber);
+    pm(actors.get("C").degree);
   }
 
   @Test
   public void testAD_BFS() {
     this.resetGraph();
     this.bfsBuildBacon("A");
-    pm(actors.get("D").baconNumber);
+    pm(actors.get("D").degree);
   }
 
 
