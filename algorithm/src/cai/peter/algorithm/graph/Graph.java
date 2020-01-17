@@ -9,28 +9,28 @@ import java.util.*;
 @Data
 @RequiredArgsConstructor
 public class Graph {
-  private Map<Vertex, List<Vertex>> map = new HashMap<>();
+  private Map<Vertex, List<Vertex>> edges = new HashMap<>();
 
   public void addEdge(Vertex a, Vertex b) {
-    if (!map.containsKey(a)) map.put(a, null);
+    if (!edges.containsKey(a)) edges.put(a, null);
 
-    if (!map.containsKey(b)) map.put(b, null);
+    if (!edges.containsKey(b)) edges.put(b, null);
 
     _add(a, b);
     _add(b, a);
   }
 
   private void _add(Vertex a, Vertex b) {
-    List<Vertex> neighbor = map.get(a); // get all edges for vertex a
-    if (neighbor != null) map.remove(b); // remove current edge if exist
+    List<Vertex> neighbor = edges.get(a); // get all edges for vertex a
+    if (neighbor != null) edges.remove(b); // remove current edge if exist
     else neighbor = new LinkedList<>();
 
     neighbor.add(b); // add edge
-    map.put(a, neighbor); // update edge info for vertex a
+    edges.put(a, neighbor); // update edge info for vertex a
   }
 
   public boolean hasEdge(Vertex a, Vertex b) {
-    return map.containsKey(a) && map.get(a).contains(b);
+    return edges.containsKey(a) && edges.get(a).contains(b);
   }
 
   public void breachFirstSearch(Vertex node) {
@@ -44,7 +44,7 @@ public class Graph {
       if (c.isVisited()) continue;
 
       System.out.print(c.visit() + "->");
-      List<Vertex> neighbor = map.get(c);
+      List<Vertex> neighbor = edges.get(c);
       if (neighbor == null) continue;
       for (Vertex v : neighbor) {
         if (!v.isVisited()) q.offer(v);
@@ -68,5 +68,26 @@ public class Graph {
     g.addEdge(c, d);
 
     g.breachFirstSearch(b);
+  }
+
+  public void depthFirstSearch(Vertex node) {
+    node.visit();
+    System.out.print(node + "->");
+    List<Vertex> neighbors = edges.get(node);
+    if (neighbors == null) return;
+    for (Vertex v : neighbors) {
+      if (!v.isVisited()) depthFirstSearch(v);
+    }
+  }
+
+  public void depthFirstSearchStack(Vertex node ){
+    //TODO:
+  }
+
+  public void depthFristSearchAggresive(Vertex node){
+    depthFirstSearch(node);
+    for(Vertex c : edges.keySet()){
+      if(!c.isVisited()) depthFirstSearch(c);
+    }
   }
 }
