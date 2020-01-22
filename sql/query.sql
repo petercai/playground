@@ -42,10 +42,10 @@ select to_char(sysdata, 'YYYY-MON-DD HH:MI:SS') FROM DUAL;
 SELECT e.name, m.name FROM Employee e, Employee m WHERE e.mgr_id = m.emp_id;
 
 -- find the 3rd highest salary
-SELECT Salary
-FROM EmployeeSalary Emp1
-WHERE 2 = (
-                SELECT COUNT( DISTINCT ( Emp2.Salary ) )
-                FROM EmployeeSalary Emp2
-                WHERE Emp2.Salary > Emp1.Salary
-            )
+select salary 
+from employee e1
+where 2= (
+	select count ( distinct(e2.salary))
+	from employee e2
+	where e2.salary > e1.salary)
+)			
