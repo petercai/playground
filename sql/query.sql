@@ -23,10 +23,15 @@
  select FullName from EmployeeDetails d join EmployeeSalary s ON d.EmpId = s.EmpId where s.Salary BETWEEN 5000 AND 10000
  
  -- second highest salary employee
- select * from Employee WHERE Salary NOT IN (select MAX(Salary) from Employee ); 
+ select 
+	MAX(Salary) -- 2nd high
+ from Employee 
+ WHERE 
+	Salary NOT IN (	
+		select MAX(Salary) from Employee -- 1st hight
+		); 
  
- 
- SELECT DeptName, MAX(Salary) FROM Employee e RIGHT JOIN Department d ON e.DeptId = d.DeptID GROUP BY DeptName;
+  SELECT DeptName, MAX(Salary) FROM Employee e RIGHT JOIN Department d ON e.DeptId = d.DeptID GROUP BY DeptName;
 
 
 select SYSDATA FROM DUAL;
