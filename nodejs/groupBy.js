@@ -1,8 +1,7 @@
-import _ from 'lodash'
 function groupArrayOfObjects(list, key) {
-    return list.reduce(function(rv, x) {
-      (rv[x[key]] = rv[x[key]] || []).push(x);
-      return rv;
+    return list.reduce(function(map, element) {
+        (map[element[key]] = map[element[key]] || []).push(element);
+      return map;
     }, {});
   };
   
@@ -13,6 +12,4 @@ function groupArrayOfObjects(list, key) {
       {sex:"Female", name:"Madison"}
   ];
   var groupedPeople=groupArrayOfObjects(people,"sex");
-  console.log(JSON.stringify(_.values(groupedPeople),null,2))
-//   console.log(groupedPeople.Male);//will be the Males 
-//   console.log(groupedPeople.Female);//will be the Females
+  console.log(JSON.stringify(Object.values(groupedPeople),null,2))

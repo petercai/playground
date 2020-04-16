@@ -17,15 +17,7 @@ let sai = json.map((a) =>
 );
 // console.log(sai)
 
-// let groups = sai.reduce((a, c) => {
-//   if (a.length === 0 || a[a.length-1].fieldLabel !== c.fieldLabel) {
-//     a.push([c]);
-//   } else {
-//     a[a.length-1].push(c);
-//   }
-//   return a;
-// }, []);
-//
+
 
 const prop = "fieldLabel"
 const groups = sai.reduce((map, e) => {
