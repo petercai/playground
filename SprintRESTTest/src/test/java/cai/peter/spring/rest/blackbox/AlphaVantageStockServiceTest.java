@@ -1,46 +1,42 @@
 package cai.peter.spring.rest.blackbox;
 
+import static com.mongodb.client.model.Filters.eq;
+
+import cai.peter.spring.json.JacksonUtil;
+import cai.peter.spring.rest.common.SpringTestBase;
+import com.mongodb.client.MongoCollection;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
 import javax.annotation.Resource;
 
-import org.jongo.MongoCollection;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 
-import cai.peter.spring.rest.bean.JacksonBean;
-import cai.peter.spring.rest.common.AlphaVantageIntradayResponse;
-import cai.peter.spring.rest.common.Endpoint;
-import cai.peter.spring.rest.common.FxMongo;
-import cai.peter.spring.rest.common.FxRestAssured;
+import cai.peter.spring.common.AlphaVantageIntradayResponse;
+import cai.peter.spring.common.Endpoint;
+import cai.peter.spring.common.FxMongo;
 import io.restassured.internal.mapping.Jackson2Mapper;
 import io.restassured.response.Response;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:application-context.xml"})
-@ComponentScan({"cai.peter.sprint.rest.common.*"})
-public class AlphaVantageStockServiceTest extends FxRestAssured {
+
+public class AlphaVantageStockServiceTest extends SpringTestBase {
 
   @Autowired FxMongo mg;
 
   @Resource(name = "intraday")
   protected Endpoint endpoint;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     logInit();
 
-    Endpoint as = mg.getServiceRepo().findOne(new Gson().toJson(endpoint)).as(Endpoint.class);
+    Endpoint as = mg.getServiceRepo().find(eq("active", endpoint.isActive())).first();
     as.setPath(endpoint.getPath());
     endpoint = as;
   }
@@ -50,11 +46,11 @@ public class AlphaVantageStockServiceTest extends FxRestAssured {
 
         @Override
         public ObjectMapper create(Type type, String s) {
-          return new JacksonBean().objectMapperBuilder().build();
+          return JacksonUtil.createMapper();
         }
       };
 
-  @After
+  @AfterEach
   public void tearDown() throws IOException {
     logTeardown();
   }
@@ -75,9 +71,7 @@ public class AlphaVantageStockServiceTest extends FxRestAssured {
 
     res.then().statusCode(200);
 
-    MongoCollection pini = mg.getJongo().getCollection("transactions");
-    pini.remove();
-    pini.insert(transactionResponse.getData().toArray());
+    MongoCollection<AlphaVantageIntradayResponse> transactions = mg.getMongoCollection("transactions", AlphaVantageIntradayResponse.class);
   }
 
   @Test

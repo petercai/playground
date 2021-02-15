@@ -1,4 +1,4 @@
-package cai.peter.spring.rest.common;
+package cai.peter.spring.common;
 
 import java.util.List;
 
