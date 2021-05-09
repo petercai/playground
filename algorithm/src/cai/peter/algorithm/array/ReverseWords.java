@@ -8,12 +8,12 @@ public class ReverseWords {
         char[] cs = s.toCharArray();
         int i=0;
         for(int j=0;j<cs.length;j++){
-            if(cs[j]==' '){
+            if(cs[j]==' '){ // last word won't be reversed if there is no space at the end
                 reverse(cs,i,j-1);
                 i=j+1;
             }
         }
-        reverse(cs,i, cs.length-1); // never forget the last word
+        reverse(cs,i, cs.length-1); // reverse the last word
         reverse(cs, 0, cs.length-1);
         return new String(cs);
     }
@@ -27,7 +27,7 @@ public class ReverseWords {
         }
     }
     static public void main(String[] args){
-        String s= "the sky is bule";
+        String s= "the sky is blue";
         System.out.println(s);
         System.out.println(new ReverseWords().reverseWords(s));
     }
