@@ -1294,6 +1294,50 @@ components:
       description: Pet object that needs to be added to the store
       required: true
   schemas:
+  
+    Authenticator:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - SMS-OTP
+            - PUSH-NOTIFICATION
+      additionalProperties: true
+      oneOf:
+        - $ref: '#/components/schemas/SmsOtpAuthenticator'
+        - $ref: '#/components/schemas/PushNotificationAuthenticator'
+    
+    SmsOtpAuthenticator:
+        type: object
+        properties:
+          value:
+            $ref: '#/components/schemas/SMSOTPFields'
+
+    PushNotificationAuthenticator:
+        type: object
+        properties:
+          value:
+            $ref: '#/components/schemas/PNFields'
+
+
+    SMSOTPFields:
+      type: object
+      properties:
+        phone_number:
+          type: string
+          description: phone no.
+        otp:
+          type: string
+          description: the One time password.
+
+    PNFields:
+      type: object
+      properties:
+        pn_key:
+          type: string
+          description: uuid
+
     Foo:
       example:
         bar: bar
