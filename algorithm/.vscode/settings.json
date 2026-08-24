@@ -1,0 +1,23 @@
+{
+    "java.jdt.ls.java.home": "C:\\dev\\java\\temurin\\25",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-25",
+            "path": "C:\\dev\\java\\temurin\\25",
+            "default": true
+        }
+    ],
+    "maven.terminal.customEnv": [
+        {
+            "environmentVariable": "JAVA_HOME",
+            "value": "C:\\dev\\java\\temurin\\25"
+        }
+    ],
+    "terminal.integrated.env.windows": {
+        "JAVA_HOME": "C:\\dev\\java\\temurin\\25"
+    },
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.maven.downloadSources": true,
+    "java.configuration.maven.userSettings": "c:\\dev\\mvn\\settings.xml",
+    "java.configuration.maven.globalSettings": "c:\\dev\\mvn\\settings.xml"
+}
